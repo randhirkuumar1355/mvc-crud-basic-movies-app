@@ -1,0 +1,44 @@
+﻿@{
+    var Movies = ViewBag.movies;
+    int i = 1;
+}
+
+
+<div class="card mt-5">
+        <div class="card-header bg-light fw-bold text-secondary">Movies List
+        <a class="btn btn-sm btn-primary float-end" asp-action="Create"><i class="fa fa-plus"></i> Add New</a>
+        </div>
+        <div class="card-body">
+        <table class="table table-sm table-bordered text-secondary">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Release Date</th>
+                    <th>Genre</th>
+                    <th>Price</th>
+                    <th>Created At</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+                <tbody>  
+                @foreach (var movie in Movies)
+                    {
+                        <tr>
+                            <td>@(i++)</td>
+                            <td>@movie.Title</td>
+                            <td>@movie.ReleaseDate.ToString("MM/dd/yyyy")</td>
+                            <td>@movie.Genre</td>
+                            <td>@movie.Price</td>
+                            <td>@movie.CreatedAt.ToString("MM/dd/yyyy")</td>
+                            <td>
+                            <a class="btn btn-sm btn-success" asp-action="Edit" asp-route-id="@movie.MovieId"><i class="fa fa-edit"></i></a>
+                            <a class="btn btn-sm btn-primary ms-1" asp-action="Details" asp-route-id="@movie.MovieId"><i class="fa fa-info"></i></a>
+                            <a class="btn btn-sm btn-danger ms-1" asp-action="Delete" asp-route-id="@movie.MovieId"><i class="fa fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody> 
+        </table>
+        </div>
+</div>

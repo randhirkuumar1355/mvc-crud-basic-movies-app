@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card mt-5">
+    <form asp-action="Delete">
+     <input type="hidden" asp-route-id="@ViewBag.movieData.MovieId" />
+    <div class="card-header bg-light text-secondary">Delete Movie</div>
+    <div class="card-body">
+        <table class="table table-sm table-bordered text-secondary">
+            <tbody>
+                <tr>
+                    <td>Title</td>
+                    <td>@ViewBag.movieData.Title</td>
+                </tr>
+                <tr>
+                    <td>ReleaseDate</td>
+                    <td>@ViewBag.movieData.ReleaseDate.ToString("MM/dd/yyyy")</td>
+                </tr>
+                <tr>
+                    <td>Genre</td>
+                    <td>@ViewBag.movieData.Genre</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>@ViewBag.movieData.Price</td>
+                </tr>
+                <tr>
+                    <td>CreatedAt</td>
+                    <td>@ViewBag.movieData.CreatedAt.ToString("MM/dd/yyyy")</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-sm btn-primary" asp-action="Index">Back to list</a>
+        <button type="submit" class="btn btn-sm btn-danger" asp-action="Delete">Delete</button>
+    </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
